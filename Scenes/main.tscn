@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dylx8f2wxcjy3"]
+
+[ext_resource type="Script" uid="uid://cdr6k33rxi4or" path="res://Scripts/main.gd" id="1_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://ck8gckpo7ch6w" path="res://Scenes/levels/level1.tscn" id="2_bo1nx"]
+[ext_resource type="FontFile" uid="uid://c64u5neuobedg" path="res://Assets/Fonts/Square-Black.ttf" id="3_8gbba"]
+[ext_resource type="AudioStream" uid="uid://dve0uuj2w2shg" path="res://Assets/Sounds/music.ogg" id="4_jjvhh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oq2gk"]
+bg_color = Color(0, 0.7079118, 0.5025944, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 5
+
+[node name="Main" type="Node2D" unique_id=578725274]
+script = ExtResource("1_bo1nx")
+
+[node name="LevelRoot" parent="." unique_id=1599617371 instance=ExtResource("2_bo1nx")]
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=863095762]
+
+[node name="ScorePanel" type="Panel" parent="HUD" unique_id=725715711]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 20.0
+offset_right = 80.0
+offset_bottom = 70.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oq2gk")
+
+[node name="ScoreLabel" type="Label" parent="HUD/ScorePanel" unique_id=1605830364]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -16.0
+offset_right = 62.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_8gbba")
+theme_override_font_sizes/font_size = 32
+text = "SCORE = 0"
+
+[node name="Fade" type="ColorRect" parent="HUD" unique_id=529185244]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=2085420095]
+stream = ExtResource("4_jjvhh")
+autoplay = true
