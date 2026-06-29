@@ -358,6 +358,10 @@ flip_h = true
 position = Vector2(2.0000005, 2)
 shape = SubResource("RectangleShape2D_oq2gk")
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2347092]
+position_smoothing_enabled = true
+position_smoothing_speed = 6.0
+
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="." unique_id=787124832]
 stream = ExtResource("6_x3wgy")
 
