@@ -5,8 +5,8 @@ signal quit_pressed
 
 
 func _on_play_button_pressed() -> void:
-	pass # Replace with function body.
+	play_pressed.emit()
 
 
 func _on_quit_button_pressed() -> void:
-	pass # Replace with function body.
+	quit_pressed.emit()

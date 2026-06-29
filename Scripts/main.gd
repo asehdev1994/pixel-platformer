@@ -16,11 +16,25 @@ func _ready() -> void:
 
 	_show_main_menu()
 
-	await _load_level(level, true, false)
+	#await _load_level(level, true, false)
 
 func _show_main_menu() -> void:
 	var menu = MAIN_MENU.instantiate()
 	$HUD.add_child(menu)
+	
+	menu.play_pressed.connect(_on_play_pressed)
+	menu.quit_pressed.connect(_on_quit_pressed)
+
+func _on_play_pressed() -> void:
+	for child in $HUD.get_children():
+		if child.name == "MainMenu":
+			child.queue_free()
+
+	await _load_level(level, true, false)
+
+
+func _on_quit_pressed():
+	get_tree().quit()
 
 #--------------------------
 # LEVEL MANAGEMENT
