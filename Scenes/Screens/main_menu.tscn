@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dbo005fja75s0"]
 
 [ext_resource type="Script" uid="uid://b4wag4onkmgdw" path="res://Scripts/main_menu.gd" id="1_7uq44"]
+[ext_resource type="FontFile" uid="uid://c64u5neuobedg" path="res://Assets/Fonts/Square-Black.ttf" id="2_5ewdl"]
 
 [node name="MainMenu" type="Control" unique_id=1843677950]
 layout_mode = 3
@@ -32,14 +33,20 @@ theme_override_constants/separation = 32
 
 [node name="TitleLabel" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer" unique_id=1538883390]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5ewdl")
+theme_override_font_sizes/font_size = 72
 text = "Pixel Platformer"
 
 [node name="PlayButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer" unique_id=709432858]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5ewdl")
+theme_override_font_sizes/font_size = 32
 text = "Play"
 
 [node name="QuitButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer" unique_id=782245228]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5ewdl")
+theme_override_font_sizes/font_size = 32
 text = "Quit"
 
 [connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
