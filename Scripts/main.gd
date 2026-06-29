@@ -9,6 +9,8 @@ var current_level_root: Node = null
 
 const MAIN_MENU = preload("res://Scenes/Screens/main_menu.tscn")
 
+var current_screen: Control = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	fade.modulate.a = 1.0
@@ -19,22 +21,31 @@ func _ready() -> void:
 	#await _load_level(level, true, false)
 
 func _show_main_menu() -> void:
-	var menu = MAIN_MENU.instantiate()
-	$HUD.add_child(menu)
-	
-	menu.play_pressed.connect(_on_play_pressed)
-	menu.quit_pressed.connect(_on_quit_pressed)
+	_show_screen(MAIN_MENU)
+
+	current_screen.play_pressed.connect(_on_play_pressed)
+	current_screen.quit_pressed.connect(_on_quit_pressed)
 
 func _on_play_pressed() -> void:
-	for child in $HUD.get_children():
-		if child.name == "MainMenu":
-			child.queue_free()
+	_hide_current_screen()
 
 	await _load_level(level, true, false)
 
 
 func _on_quit_pressed():
 	get_tree().quit()
+
+func _hide_current_screen() -> void:
+	if current_screen:
+		current_screen.queue_free()
+		current_screen = null
+
+func _show_screen(screen_scene: PackedScene) -> void:
+	_hide_current_screen()
+
+	current_screen = screen_scene.instantiate()
+
+	$HUD.add_child(current_screen)
 
 #--------------------------
 # LEVEL MANAGEMENT
