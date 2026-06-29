@@ -60,39 +60,41 @@ func _load_level(level_number: int, first_load: bool, reset_score: bool) -> void
 		score = 0
 		score_label.text = "SCORE: 0"
 	
-	if current_level_root:
-		current_level_root.queue_free()
-	
-	# Change level
-	var level_path = "res://Scenes/levels/level%s.tscn" %level_number
-	current_level_root = load(level_path).instantiate()
-	add_child(current_level_root)
-	current_level_root.name = "LevelRoot"
-	_setup_level(current_level_root)
+	# Remove the existing level, if there is one
+	for child in current_level_root.get_children():
+		child.queue_free()
+
+	# Load the new level
+	var level_path = "res://Scenes/levels/level%s.tscn" % level_number
+	var level_scene = load(level_path).instantiate()
+
+	current_level_root.add_child(level_scene)
+
+	_setup_level(level_scene)
 	
 	# Fade in
 	await _fade(0.0)
 
-func _setup_level(level_root: Node) -> void:
+func _setup_level(level_scene: Node) -> void:
 	# Connect exit
-	var exit = level_root.get_node_or_null("Exit")
+	var exit = level_scene.get_node_or_null("Exit")
 	if exit:
 		exit.body_entered.connect(_on_exit_body_entered)
 	
 	# Connect oranges
-	var oranges = level_root.get_node_or_null("Oranges")
+	var oranges = level_scene.get_node_or_null("Oranges")
 	if oranges:
 		for orange in oranges.get_children():
 			orange.collected.connect(increase_score)
 			
 	# Connect enemies
-	var enemies = level_root.get_node_or_null("Enemies")
+	var enemies = level_scene.get_node_or_null("Enemies")
 	if enemies:
 		for enemy in enemies.get_children():
 			enemy.player_died.connect(_on_player_died)
 			
 	# Connect spikes
-	var traps = level_root.get_node_or_null("Traps")
+	var traps = level_scene.get_node_or_null("Traps")
 	if traps:
 		for trap in traps.get_children():
 			trap.player_died.connect(_on_player_died)

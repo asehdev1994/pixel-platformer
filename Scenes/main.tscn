@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dylx8f2wxcjy3"]
 
 [ext_resource type="Script" uid="uid://cdr6k33rxi4or" path="res://Scripts/main.gd" id="1_bo1nx"]
-[ext_resource type="PackedScene" uid="uid://ck8gckpo7ch6w" path="res://Scenes/levels/level1.tscn" id="2_bo1nx"]
 [ext_resource type="FontFile" uid="uid://c64u5neuobedg" path="res://Assets/Fonts/Square-Black.ttf" id="3_8gbba"]
 [ext_resource type="AudioStream" uid="uid://dve0uuj2w2shg" path="res://Assets/Sounds/music.ogg" id="4_jjvhh"]
 
@@ -20,7 +19,7 @@ shadow_size = 5
 [node name="Main" type="Node2D" unique_id=578725274]
 script = ExtResource("1_bo1nx")
 
-[node name="LevelRoot" parent="." unique_id=1599617371 instance=ExtResource("2_bo1nx")]
+[node name="LevelRoot" type="Node2D" parent="." unique_id=207642218]
 
 [node name="ScreenRoot" type="CanvasLayer" parent="." unique_id=1264909462]
 
