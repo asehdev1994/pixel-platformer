@@ -10,6 +10,7 @@ var alive = true
 var can_move = true
 const MAX_JUMPS = 2
 var jumps_left = MAX_JUMPS
+const WALL_SLIDE_GRAVITY_MULTIPLIER = 0.2
 
 func _ready() -> void:
 	animated_sprite_2d.animation_finished.connect(_on_animation_finished)
@@ -23,11 +24,12 @@ func _physics_process(delta: float) -> void:
 		jumps_left = MAX_JUMPS
 	
 	# Add the gravity.
+	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
-	
-	if is_wall_sliding():
-		print("Wall sliding")
+		if is_wall_sliding():
+			velocity += get_gravity() * delta * WALL_SLIDE_GRAVITY_MULTIPLIER
+		else:
+			velocity += get_gravity() * delta
 
 	if can_move:
 		# Handle jump.
