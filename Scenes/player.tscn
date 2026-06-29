@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b0a17k3s7dyat" path="res://Assets/Images/Player/Run (32x32).png" id="4_3smsa"]
 [ext_resource type="AudioStream" uid="uid://bfomn42xipkfl" path="res://Assets/Sounds/jump.wav" id="6_x3wgy"]
 [ext_resource type="AudioStream" uid="uid://b43e85tmu3q2e" path="res://Assets/Sounds/death.wav" id="7_3smsa"]
+[ext_resource type="Texture2D" uid="uid://ck3ld5k10iw7m" path="res://Assets/Images/Player/Wall Jump (32x32).png" id="7_f1ek2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qpa8y"]
 atlas = ExtResource("2_8erm5")
@@ -153,6 +154,26 @@ region = Rect2(320, 0, 32, 32)
 atlas = ExtResource("4_3smsa")
 region = Rect2(352, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7t2e"]
+atlas = ExtResource("7_f1ek2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmr2m"]
+atlas = ExtResource("7_f1ek2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ax3m3"]
+atlas = ExtResource("7_f1ek2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vlem"]
+atlas = ExtResource("7_f1ek2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8eeqe"]
+atlas = ExtResource("7_f1ek2")
+region = Rect2(128, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_oq2gk"]
 animations = [{
 "frames": [{
@@ -295,6 +316,26 @@ animations = [{
 "loop": 1,
 "name": &"running",
 "speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7t2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmr2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ax3m3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vlem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8eeqe")
+}],
+"loop": 1,
+"name": &"wallsliding",
+"speed": 20.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oq2gk"]
@@ -307,10 +348,10 @@ script = ExtResource("1_fkybt")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1371955511]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_oq2gk")
-animation = &"doublejumping"
+animation = &"wallsliding"
 autoplay = "idle"
-frame = 3
-frame_progress = 0.9339558
+frame = 4
+frame_progress = 0.020009749
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=561022289]

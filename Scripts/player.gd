@@ -70,13 +70,17 @@ func _on_animation_finished() -> void:
 
 func update_animation() -> void:
 
+	# Don't interrupt the double jump animation
+	if animated_sprite_2d.animation == "doublejumping":
+		return
+
+	# Wall slide animation
+	if is_wall_sliding():
+		set_animation("wallsliding")
+		return
+
 	# Air animations
 	if not is_on_floor():
-
-		# Don't interrupt the double jump animation
-		if animated_sprite_2d.animation == "doublejumping":
-			return
-
 		set_animation("jumping")
 		return
 
