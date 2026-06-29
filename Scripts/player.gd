@@ -11,6 +11,9 @@ var can_move = true
 const MAX_JUMPS = 2
 var jumps_left = MAX_JUMPS
 
+func _ready() -> void:
+	animated_sprite_2d.animation_finished.connect(_on_animation_finished)
+
 func _physics_process(delta: float) -> void:
 	
 	if !alive:
@@ -18,17 +21,10 @@ func _physics_process(delta: float) -> void:
 		
 	if is_on_floor():
 		jumps_left = MAX_JUMPS
-		
-	# Add animation
-	if velocity.x >1 or velocity.x < -1:
-		animated_sprite_2d.animation = "running"
-	else:
-		animated_sprite_2d.animation = "idle"
 	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-		animated_sprite_2d.animation = "jumping"
 
 	if can_move:
 		# Handle jump.
@@ -36,6 +32,8 @@ func _physics_process(delta: float) -> void:
 			velocity.y = JUMP_VELOCITY
 			jumps_left -= 1
 			jump_sound.play()
+			if jumps_left == 0:
+				animated_sprite_2d.play("doublejumping")
 
 		# Get the input direction and handle the movement/deceleration.
 		var direction := Input.get_axis("left", "right")
@@ -50,11 +48,39 @@ func _physics_process(delta: float) -> void:
 			animated_sprite_2d.flip_h = false
 		elif direction == -1.0:
 			animated_sprite_2d.flip_h = true
+		
+		update_animation()
 
 func die() -> void:
 	death_sound.play()
-	animated_sprite_2d.animation = "dying"
+	animated_sprite_2d.play("dying")
 	alive = false
 
 func bounce():
 	velocity.y = JUMP_VELOCITY * 0.7
+
+func _on_animation_finished() -> void:
+	if animated_sprite_2d.animation == "doublejumping":
+		animated_sprite_2d.play("jumping")
+
+func update_animation() -> void:
+
+	# Air animations
+	if not is_on_floor():
+
+		# Don't interrupt the double jump animation
+		if animated_sprite_2d.animation == "doublejumping":
+			return
+
+		set_animation("jumping")
+		return
+
+	# Ground animations
+	if abs(velocity.x) > 1:
+		set_animation("running")
+	else:
+		set_animation("idle")
+
+func set_animation(name: String) -> void:
+	if animated_sprite_2d.animation != name:
+		animated_sprite_2d.play(name)
