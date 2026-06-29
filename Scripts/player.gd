@@ -25,6 +25,9 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	
+	if is_wall_sliding():
+		print("Wall sliding")
 
 	if can_move:
 		# Handle jump.
@@ -80,6 +83,12 @@ func update_animation() -> void:
 		set_animation("running")
 	else:
 		set_animation("idle")
+
+func is_wall_sliding() -> bool:
+	return (
+		is_on_wall_only()
+		and velocity.y > 0
+	)
 
 func set_animation(name: String) -> void:
 	if animated_sprite_2d.animation != name:
