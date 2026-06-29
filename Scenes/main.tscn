@@ -22,7 +22,7 @@ script = ExtResource("1_bo1nx")
 
 [node name="LevelRoot" parent="." unique_id=1599617371 instance=ExtResource("2_bo1nx")]
 
-[node name="ScreenRoot" type="CanvasLayer" parent="." unique_id=706662073]
+[node name="ScreenRoot" type="CanvasLayer" parent="." unique_id=1264909462]
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=863095762]
 

@@ -1,17 +1,26 @@
 extends Node2D
 @onready var score_label: Label = $HUD/ScorePanel/ScoreLabel
 @onready var fade: ColorRect = $HUD/Fade
+@onready var screen_root: CanvasLayer = $ScreenRoot
 
 var level: int = 1
 var score: int = 0
 var current_level_root: Node = null
 
+const MAIN_MENU = preload("res://Scenes/Screens/main_menu.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# Set up level
 	fade.modulate.a = 1.0
 	current_level_root = get_node("LevelRoot")
+
+	_show_main_menu()
+
 	await _load_level(level, true, false)
+
+func _show_main_menu() -> void:
+	var menu = MAIN_MENU.instantiate()
+	$HUD.add_child(menu)
 
 #--------------------------
 # LEVEL MANAGEMENT
