@@ -3,6 +3,84 @@
 [ext_resource type="Script" uid="uid://b4wag4onkmgdw" path="res://Scripts/main_menu.gd" id="1_7uq44"]
 [ext_resource type="FontFile" uid="uid://c64u5neuobedg" path="res://Assets/Fonts/Square-Black.ttf" id="2_5ewdl"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ewdl"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.16862746, 0.2, 0.29411766, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9607843, 0.94509804, 0.84705883, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2yntn"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.1254902, 0.14901961, 0.22745098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9607843, 0.94509804, 0.84705883, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_87iyl"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.22745098, 0.27058825, 0.4, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9607843, 0.94509804, 0.84705883, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7qusf"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.16862746, 0.2, 0.29411766, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9607843, 0.94509804, 0.84705883, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjeha"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.1254902, 0.14901961, 0.22745098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9607843, 0.94509804, 0.84705883, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ip1ff"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.22745098, 0.27058825, 0.4, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9607843, 0.94509804, 0.84705883, 1)
+corner_detail = 1
+
 [node name="MainMenu" type="Control" unique_id=1843677950]
 layout_mode = 3
 anchors_preset = 15
@@ -39,14 +117,22 @@ text = "Pixel Platformer"
 
 [node name="PlayButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer" unique_id=709432858]
 layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0.9607843, 0.7176471, 1)
 theme_override_fonts/font = ExtResource("2_5ewdl")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_5ewdl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2yntn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_87iyl")
 text = "Play"
 
 [node name="QuitButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer" unique_id=782245228]
 layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0.9607843, 0.7176471, 1)
 theme_override_fonts/font = ExtResource("2_5ewdl")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_7qusf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fjeha")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ip1ff")
 text = "Quit"
 
 [connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
