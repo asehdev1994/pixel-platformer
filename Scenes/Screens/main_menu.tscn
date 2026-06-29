@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dbo005fja75s0"]
 
 [ext_resource type="Script" uid="uid://b4wag4onkmgdw" path="res://Scripts/main_menu.gd" id="1_7uq44"]
+[ext_resource type="Texture2D" uid="uid://uos5q44dri0i" path="res://Assets/Images/Backgrounds/Blue.png" id="2_2yntn"]
 [ext_resource type="FontFile" uid="uid://c64u5neuobedg" path="res://Assets/Fonts/Square-Black.ttf" id="2_5ewdl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ewdl"]
@@ -89,6 +90,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7uq44")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1573855045]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_2yntn")
+expand_mode = 2
+stretch_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2077157459]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.47058824)
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=501733308]
 layout_mode = 1
