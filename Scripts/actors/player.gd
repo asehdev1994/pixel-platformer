@@ -3,7 +3,9 @@ extends CharacterBody2D
 @onready var jump_sound: AudioStreamPlayer2D = $JumpSound
 @onready var death_sound: AudioStreamPlayer2D = $DeathSound
 
+@export var default_surface: SurfaceProperties
 
+var current_surface: SurfaceProperties
 const SPEED = 300.0
 const JUMP_VELOCITY = -850.0
 const WALL_JUMP_PUSH = 250.0
@@ -18,6 +20,7 @@ var wall_jump_lock = 0.0
 
 func _ready() -> void:
 	animated_sprite_2d.animation_finished.connect(_on_animation_finished)
+	current_surface = default_surface
 
 func _physics_process(delta: float) -> void:
 	
@@ -73,6 +76,8 @@ func _physics_process(delta: float) -> void:
 
 		move_and_slide()
 		
+		update_current_surface()
+		
 		if direction == 1.0:
 			animated_sprite_2d.flip_h = false
 		elif direction == -1.0:
@@ -87,6 +92,23 @@ func die() -> void:
 
 func bounce():
 	velocity.y = JUMP_VELOCITY * 0.7
+
+func update_current_surface() -> void:
+	current_surface = default_surface
+
+	if !is_on_floor():
+		return
+
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+
+		if collision.get_normal().y < -0.9:
+			var collider = collision.get_collider()
+
+			var surface_component = collider.get_node_or_null("SurfaceComponent")
+
+			if surface_component:
+				current_surface = surface_component.get_surface()
 
 func _on_animation_finished() -> void:
 	if animated_sprite_2d.animation == "doublejumping2":
