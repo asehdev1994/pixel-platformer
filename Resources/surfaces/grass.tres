@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="SurfaceProperties" format=3 uid="uid://cvug1ikfxrbqu"]
+
+[ext_resource type="Script" uid="uid://d1a23kgq5llmp" path="res://Scripts/surfaces/surface_properties.gd" id="1_mpyty"]
+
+[resource]
+script = ExtResource("1_mpyty")
+metadata/_custom_type_script = "uid://d1a23kgq5llmp"
