@@ -61,7 +61,7 @@ func _physics_process(delta: float) -> void:
 			jump_sound.play()
 
 			if jumps_left == 0:
-				animated_sprite_2d.play("doublejumping")
+				animated_sprite_2d.play("doublejumping2")
 
 		# Get the input direction and handle the movement/deceleration.
 		var direction := Input.get_axis("left", "right")
@@ -89,13 +89,13 @@ func bounce():
 	velocity.y = JUMP_VELOCITY * 0.7
 
 func _on_animation_finished() -> void:
-	if animated_sprite_2d.animation == "doublejumping":
-		animated_sprite_2d.play("jumping")
+	if animated_sprite_2d.animation == "doublejumping2":
+		animated_sprite_2d.play("jumping2")
 
 func update_animation() -> void:
 
 	# Don't interrupt the double jump animation
-	if animated_sprite_2d.animation == "doublejumping":
+	if animated_sprite_2d.animation == "doublejumping2":
 		return
 
 	# Wall slide animation
@@ -105,14 +105,14 @@ func update_animation() -> void:
 
 	# Air animations
 	if not is_on_floor():
-		set_animation("jumping")
+		set_animation("jumping2")
 		return
 
 	# Ground animations
 	if abs(velocity.x) > 1:
-		set_animation("running")
+		set_animation("running2")
 	else:
-		set_animation("idle")
+		set_animation("idle2")
 
 func is_wall_sliding() -> bool:
 	return (
