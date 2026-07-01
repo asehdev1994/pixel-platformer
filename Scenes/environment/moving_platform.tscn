@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dlc4ucef73bnr" path="res://Assets/Images/Tilemap/Terrain (16x16).png" id="1_vvyo4"]
 [ext_resource type="Script" uid="uid://dk6xou6seto6y" path="res://Scripts/surfaces/surface_component.gd" id="2_i6o5t"]
-[ext_resource type="Resource" uid="uid://cvug1ikfxrbqu" path="res://Resources/surfaces/grass.tres" id="3_sh4b6"]
+[ext_resource type="Resource" uid="uid://cvug1ikfxrbqu" path="res://Resources/surfaces/grass_surface.tres" id="3_sh4b6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oq2gk"]
 size = Vector2(46, 4)

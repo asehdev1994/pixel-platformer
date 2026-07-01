@@ -52,8 +52,6 @@ func _physics_process(delta: float) -> void:
 
 			# If wall sliding, push away from the wall
 			if wall_jump:
-				print("Wall jump!")
-				print(get_wall_normal())
 				velocity.x = get_wall_normal().x * WALL_JUMP_PUSH
 				wall_jump_lock = WALL_JUMP_LOCK_TIME
 
@@ -104,12 +102,33 @@ func update_current_surface() -> void:
 
 		if collision.get_normal().y < -0.9:
 			var collider = collision.get_collider()
-
+			
+			# Moving platforms
 			var surface_component = collider.get_node_or_null("SurfaceComponent")
 
 			if surface_component:
 				current_surface = surface_component.get_surface()
+				return
+			
+			#TileMap	
+			if collider is TileMapLayer:
+				var tilemap := collider as TileMapLayer
+				var collision_position := collision.get_position()
+				var local_position := tilemap.to_local(collision_position)
+				var cell := tilemap.local_to_map(local_position)
+				
+				var tile_data := tilemap.get_cell_tile_data(cell)
 
+				if tile_data == null:
+					return
+				
+				var surface = tile_data.get_custom_data("surface")
+
+				if surface is SurfaceProperties:
+					current_surface = surface
+					
+				return
+				
 func _on_animation_finished() -> void:
 	if animated_sprite_2d.animation == "doublejumping2":
 		animated_sprite_2d.play("jumping2")
