@@ -7,6 +7,8 @@ extends CharacterBody2D
 
 var current_surface: SurfaceProperties
 const SPEED = 300.0
+const ACCELERATION = 1800.0
+const DECELERATION = 1800.0
 const JUMP_VELOCITY = -850.0
 const WALL_JUMP_PUSH = 250.0
 var alive = true
@@ -35,9 +37,9 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		if is_wall_sliding():
-			velocity += get_gravity() * delta * WALL_SLIDE_GRAVITY_MULTIPLIER
+			velocity += get_gravity() * delta * WALL_SLIDE_GRAVITY_MULTIPLIER * current_surface.gravity_multiplier
 		else:
-			velocity += get_gravity() * delta
+			velocity += get_gravity() * delta * current_surface.gravity_multiplier
 	
 	if is_wall_sliding() and !was_wall_sliding:
 		jumps_left = MAX_JUMPS
@@ -56,7 +58,7 @@ func _physics_process(delta: float) -> void:
 				wall_jump_lock = WALL_JUMP_LOCK_TIME
 
 			# Jump upwards
-			velocity.y = JUMP_VELOCITY
+			velocity.y = JUMP_VELOCITY * current_surface.jump_multiplier
 
 			jumps_left -= 1
 			jump_sound.play()
@@ -68,9 +70,19 @@ func _physics_process(delta: float) -> void:
 		var direction := Input.get_axis("left", "right")
 		if wall_jump_lock <= 0.0:
 			if direction:
-				velocity.x = direction * SPEED
+				var target_speed = direction * SPEED * current_surface.max_speed_multiplier
+
+				velocity.x = move_toward(
+					velocity.x,
+					target_speed,
+					ACCELERATION * current_surface.acceleration_multiplier * delta
+				)
 			else:
-				velocity.x = move_toward(velocity.x, 0, SPEED)
+				velocity.x = move_toward(
+					velocity.x,
+					0,
+					DECELERATION * current_surface.deceleration_multiplier * delta
+				)
 
 		move_and_slide()
 		
@@ -89,7 +101,7 @@ func die() -> void:
 	alive = false
 
 func bounce():
-	velocity.y = JUMP_VELOCITY * 0.7
+	velocity.y = JUMP_VELOCITY * 0.7 * current_surface.jump_multiplier
 
 func update_current_surface() -> void:
 	current_surface = default_surface
