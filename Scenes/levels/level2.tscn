@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://b3c1adst1s3eg" path="res://Assets/Images/Backgrounds/Gray.png" id="1_eloyq"]
 [ext_resource type="Texture2D" uid="uid://dlc4ucef73bnr" path="res://Assets/Images/Tilemap/Terrain (16x16).png" id="2_782v1"]
-[ext_resource type="PackedScene" uid="uid://bja3f46fectnk" path="res://Scenes/player.tscn" id="3_sjedw"]
-[ext_resource type="PackedScene" uid="uid://dv2wux7fxlg5o" path="res://Scenes/snail.tscn" id="4_oocy4"]
-[ext_resource type="PackedScene" uid="uid://de137dx35xdhx" path="res://Scenes/orange.tscn" id="5_wqqg4"]
+[ext_resource type="PackedScene" uid="uid://bja3f46fectnk" path="res://Scenes/actors/player.tscn" id="3_sjedw"]
+[ext_resource type="PackedScene" uid="uid://dv2wux7fxlg5o" path="res://Scenes/actors/snail.tscn" id="4_oocy4"]
+[ext_resource type="PackedScene" uid="uid://de137dx35xdhx" path="res://Scenes/collectibles/orange.tscn" id="5_wqqg4"]
 [ext_resource type="Texture2D" uid="uid://dx4pqbs52ncmc" path="res://Assets/Images/Tilemap/End (Pressed) (64x64).png" id="6_4wxk4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_skpnj"]

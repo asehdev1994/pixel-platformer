@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dv2wux7fxlg5o"]
 
 [ext_resource type="Texture2D" uid="uid://cygyldyjnmuoq" path="res://Assets/Images/Snail/Walk (38x24).png" id="1_nsjvy"]
-[ext_resource type="Script" uid="uid://mt1bhf4q2bx0" path="res://Scripts/snail.gd" id="1_qjijy"]
+[ext_resource type="Script" uid="uid://mt1bhf4q2bx0" path="res://Scripts/actors/snail.gd" id="1_qjijy"]
 [ext_resource type="Texture2D" uid="uid://dctww7qxxleii" path="res://Assets/Images/Snail/Hit (38x24).png" id="2_fnba0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_isgqn"]

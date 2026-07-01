@@ -7,7 +7,7 @@ var level: int = 1
 var score: int = 0
 var current_level_root: Node = null
 
-const MAIN_MENU = preload("res://Scenes/Screens/main_menu.tscn")
+const MAIN_MENU = preload("res://Scenes/ui/main_menu.tscn")
 
 var current_screen: Control = null
 

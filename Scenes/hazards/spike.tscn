@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://smy8lcg0185j"]
 
-[ext_resource type="Script" uid="uid://ckex3vtbpo8ht" path="res://Scripts/spike.gd" id="1_1hotg"]
+[ext_resource type="Script" uid="uid://ckex3vtbpo8ht" path="res://Scripts/hazards/spike.gd" id="1_1hotg"]
 [ext_resource type="Texture2D" uid="uid://70shj73bj64c" path="res://Assets/Images/Spikes/Idle.png" id="1_cdj5a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oq2gk"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://de137dx35xdhx"]
 
-[ext_resource type="Script" uid="uid://c5gdhvs07hj85" path="res://Scripts/orange.gd" id="1_andne"]
+[ext_resource type="Script" uid="uid://c5gdhvs07hj85" path="res://Scripts/collectibles/orange.gd" id="1_andne"]
 [ext_resource type="Texture2D" uid="uid://taiwu46miww2" path="res://Assets/Images/Collectibles/Collected.png" id="1_n2n7t"]
 [ext_resource type="Texture2D" uid="uid://di51vwjyvr0pw" path="res://Assets/Images/Collectibles/Orange.png" id="2_andne"]
 [ext_resource type="AudioStream" uid="uid://gcfiia8h2a7c" path="res://Assets/Sounds/collect_apple.wav" id="4_oa3yw"]

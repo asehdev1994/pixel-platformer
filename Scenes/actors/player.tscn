@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bja3f46fectnk"]
 
-[ext_resource type="Script" uid="uid://crfh2ni0be028" path="res://Scripts/player.gd" id="1_fkybt"]
+[ext_resource type="Script" uid="uid://crfh2ni0be028" path="res://Scripts/actors/player.gd" id="1_fkybt"]
 [ext_resource type="Texture2D" uid="uid://cqthprfkhc1oy" path="res://Assets/Images/Player/Hit (32x32).png" id="1_vgqql"]
 [ext_resource type="Texture2D" uid="uid://cyhigyfghmkqf" path="res://Assets/Images/Player/Double Jump (32x32).png" id="2_8erm5"]
 [ext_resource type="Texture2D" uid="uid://drpbhft67ecob" path="res://Assets/Images/Player/Idle (32x32).png" id="2_fkybt"]
